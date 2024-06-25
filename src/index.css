@@ -9,6 +9,7 @@
 body {
   margin: 0;
   background-color: #f0f2f5;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 /* Container */
@@ -16,10 +17,10 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
+  padding-bottom: 50px; /* Space for footer */
 }
 
 .sidebar {
- 
   padding: 20px;
   background-color: #1b0067;
   color: #ffffff;
@@ -29,6 +30,8 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
+  width: 300px; /* Fixed width */
+  overflow-y: auto;
 }
 
 .sidebar h1 {
@@ -36,6 +39,17 @@ body {
   margin-bottom: 20px;
 }
 
+.instructions button {
+  padding: 10px;
+  background-color: #2200ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.instructions button:hover {
+  background-color: #1e02d1;
+}
 #newfield {
   display: flex;
   margin-bottom: 0;
@@ -52,7 +66,7 @@ body {
 }
 
 #addfield {
-  padding: 10px 20px;
+  
   background-color: #007bff;
   color: white;
   border: none;
@@ -63,7 +77,12 @@ body {
 #addfield:hover {
   background-color: #0056b3;
 }
-
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc; /* Change the color as needed */
+  margin: 20px 0; /* Add some margin for spacing */
+}
 .input-group {
   display: flex;
   flex-direction: column;
@@ -99,7 +118,7 @@ body {
 
 .input-group button {
   padding: 10px;
-  background-color: #d40000;
+  background-color: #ff4d4d;
   color: white;
   border: none;
   border-radius: 4px;
@@ -113,8 +132,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
-.input-group button:hover {
+#addentry:hover {
   background-color: #0056b3;
 }
 
@@ -125,12 +143,15 @@ body {
 
 .button-group button {
   padding: 10px;
-  background-color: #6c757d;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.button-group button:hover {
+  background-color: #ad0000;
 }
 
 .sort {
@@ -142,6 +163,10 @@ body {
   cursor: pointer;
 }
 
+.sort:hover {
+  background-color: #0056b3;
+}
+
 .input-sort {
   display: flex;
   margin-top: 10px;
@@ -149,10 +174,6 @@ body {
 
 .p1 p {
   text-align: center;
-}
-
-.button-group button:hover {
-  background-color: #5a6268;
 }
 
 .print {
@@ -174,7 +195,11 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-left: 315px;
+  margin-left: 320px; /* Adjusted for sidebar width */
+}
+.main-content h1 {
+  text-align: center;
+  font-size: 17px;
 }
 
 .student-list {
@@ -198,6 +223,8 @@ body {
 
 .student-item:hover {
   transform: scale(1.02);
+  background-color: #ecebeb;
+  cursor: pointer;
 }
 
 .student-info {
@@ -207,6 +234,10 @@ body {
 
 .print-container {
   padding: 5px 10px;
+}
+
+.print-container h2 {
+  text-align: center;
 }
 
 .print-student {
@@ -230,10 +261,13 @@ body {
 /* Footer */
 footer {
   background-color: #343a40;
-  margin-bottom: 0;
   padding: 10px;
   text-align: center;
   color: #f7f7f7;
+  position: fixed;
+  left: 300px; /* Adjusted for sidebar width */
+  bottom: 0;
+  right: 0;
 }
 
 #printDate {
@@ -243,8 +277,7 @@ footer {
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 5px 15px;
-  opacity: 0.7;
+  padding: 10px 15px;
 }
 
 /* Media Queries */
@@ -254,18 +287,26 @@ footer {
     height: auto;
     position: static;
     padding: 20px;
-    margin-bottom: 10px;
   }
-
+  .input-group {
+    margin-top: 30px;
+  }
   .container {
     flex-direction: column;
     height: auto;
   }
 
   .main-content {
-    align-items: center;
     margin-left: 0;
     padding: 20px;
+  }
+
+  .student-list {
+    padding: 10px;
+  }
+
+  footer {
+    left: 0;
   }
 }
 
@@ -273,7 +314,9 @@ footer {
   .sidebar {
     padding: 15px;
   }
-
+  .input-group {
+    margin-top: 30px;
+  }
   .main-content {
     padding: 15px;
   }
@@ -281,19 +324,37 @@ footer {
   .student-item {
     padding: 10px 15px;
   }
+
+  .student-list {
+    padding: 10px;
+  }
+
+  footer {
+    left: 0;
+  }
 }
 
 @media (max-width: 320px) {
   .sidebar {
     padding: 10px;
   }
-
+  .input-group {
+    margin-top: 30px;
+  }
   .main-content {
     padding: 10px;
   }
 
   .student-item {
     padding: 8px 10px;
+  }
+
+  .student-list {
+    padding: 10px;
+  }
+
+  footer {
+    left: 0;
   }
 }
 

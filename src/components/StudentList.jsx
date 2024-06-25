@@ -9,7 +9,7 @@ const StudentList = () => {
   const [fields, setFields] = useState([]);
   const [newFieldName, setNewFieldName] = useState('');
   const [sortCriteria, setSortCriteria] = useState('');
-
+  const [showInstructions, setShowInstructions] = useState(false);
   const printComponentRef = useRef();
 
   const handleFieldChange = (index, value) => {
@@ -92,22 +92,39 @@ const StudentList = () => {
     setStudents(sortedStudents);
   };
 
+  const toggleInstructions = () => {
+    setShowInstructions(!showInstructions);
+  };
+
   return (
     <div className="container">
       <div className="sidebar">
         <h1>Data Management</h1>
+        <div className='instructions'>
+        <button onClick={toggleInstructions}>Hit For Instructions</button>
+          {showInstructions && (
+            <p>
+              Add new fields by entering a name in the "New Field" input and clicking "Add Field".
+              If your fields are filled, click "Add Data" to add a data entry.
+              For sorting, enter the name of the field by which you want to sort the data
+              and click "Sort". Additionally, you can print the student list by clicking the "Print" button.
+            </p>
+          )}
+        </div>
+        
         <div id="newfield">
           <input
             type="text"
-            placeholder="New Field Name"
+            placeholder="New Field:"
             value={newFieldName}
             onChange={handleNewFieldNameChange}
             onKeyPress={handleNewFieldKeyPress}
           />
-
           <button id="addfield" onClick={addField}>Add Field</button>
         </div>
+        <hr />
         <div className="input-group">
+    
           {fields.map((field, index) => (
             <div key={index} className="field-container">
               <input
@@ -121,24 +138,24 @@ const StudentList = () => {
               <button className="delete-field-button" onClick={() => deleteField(index)}>Delete</button>
             </div>
           ))}
-          <button id="addentry" onClick={addStudent}>Add Entry</button>
+          <button id="addentry" onClick={addStudent}>Add Data</button>
           <div className="button-group">
-            <button onClick={deleteAllStudents}>Delete All Entries</button>
+            <button onClick={deleteAllStudents}>Delete All Data</button>
           </div>
         </div>
         <div className="input-p-sort">
-        <div className="p1">
-         <p>Sort Your Data</p>
+          <div className="p1">
+            <p>Sort Your Data</p>
           </div>
-        <div className='input-sort'>
-          <input
-            type="text"
-            placeholder="Sort Option"
-            value={sortCriteria}
-            onChange={handleSortCriteriaChange}
-          />
-          <button className="sort" onClick={() => sortStudents(sortCriteria)}>Sort</button>
-        </div>
+          <div className='input-sort'>
+            <input
+              type="text"
+              placeholder="Sort Option"
+              value={sortCriteria}
+              onChange={handleSortCriteriaChange}
+            />
+            <button className="sort" onClick={() => sortStudents(sortCriteria)}>Sort</button>
+          </div>
         </div>
 
         <ReactToPrint
@@ -147,6 +164,7 @@ const StudentList = () => {
         />
       </div>
       <div className="main-content">
+        <h1>Welcome to the Data Management React App!</h1>
         <div className="student-list">
           {students.map((student, index) => (
             <Student key={index} student={student} index={index} deleteStudent={deleteStudent} />

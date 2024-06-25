@@ -5,7 +5,7 @@ const PrintComponent = React.forwardRef((props, ref) => {
   
   return (
     <div ref={ref} className="print-container">
-      <h2>To Be Printed</h2>
+      <h2>Data Printer</h2>
       {students.map((student, index) => (
         <div key={index} className="print-student">
           {Object.keys(student).map(key => (
@@ -13,6 +13,7 @@ const PrintComponent = React.forwardRef((props, ref) => {
           ))}
         </div>
       ))}
+      <div id='printDate'>&copy; Data Managment {new Date().toLocaleDateString()}</div>
     </div>
   );
 });
