@@ -1,10 +1,3 @@
-/* Universal Box Sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 /* Body */
 body {
   margin: 0;
@@ -17,7 +10,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
-  padding-bottom: 50px; /* Space for footer */
+  padding-bottom: 50px;
+  /* Space for footer */
 }
 
 .sidebar {
@@ -30,7 +24,8 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 300px; /* Fixed width */
+  width: 300px;
+  /* Fixed width */
   overflow-y: auto;
 }
 
@@ -47,9 +42,11 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .instructions button:hover {
   background-color: #1e02d1;
 }
+
 #newfield {
   display: flex;
   margin-bottom: 0;
@@ -66,7 +63,6 @@ body {
 }
 
 #addfield {
-  
   background-color: #007bff;
   color: white;
   border: none;
@@ -77,21 +73,39 @@ body {
 #addfield:hover {
   background-color: #0056b3;
 }
+
 hr {
   border: 0;
   height: 1px;
-  background: #ccc; /* Change the color as needed */
-  margin: 20px 0; /* Add some margin for spacing */
+  background: #ccc;
+  /* Change the color as needed */
+  margin: 20px 0;
+  /* Add some margin for spacing */
 }
+
 .input-group {
   display: flex;
   flex-direction: column;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0px 7px rgba(255, 255, 255, 0.721);
+}
+
+.input-group ul {
+  list-style-type: none;
+  padding-left: 0;
+  /* Optional: to remove the default padding */
+}
+
+.input-group li {
+
+  padding-top: 10px;
 }
 
 .field-container {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .field-container input {
@@ -132,6 +146,7 @@ hr {
   border-radius: 4px;
   cursor: pointer;
 }
+
 #addentry:hover {
   background-color: #0056b3;
 }
@@ -142,6 +157,7 @@ hr {
 }
 
 .button-group button {
+  background-color: #dc3545;
   padding: 10px;
   color: white;
   border: none;
@@ -195,8 +211,10 @@ hr {
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-left: 320px; /* Adjusted for sidebar width */
+  margin-left: 320px;
+  /* Adjusted for sidebar width */
 }
+
 .main-content h1 {
   text-align: center;
   font-size: 17px;
@@ -232,18 +250,6 @@ hr {
   padding: 10px;
 }
 
-.print-container {
-  padding: 5px 10px;
-}
-
-.print-container h2 {
-  text-align: center;
-}
-
-.print-student {
-  padding: 5px 10px;
-}
-
 .delete-button {
   background-color: #ff4d4d;
   color: white;
@@ -265,20 +271,94 @@ footer {
   text-align: center;
   color: #f7f7f7;
   position: fixed;
-  left: 300px; /* Adjusted for sidebar width */
+  left: 340px;
   bottom: 0;
   right: 0;
 }
 
-#printDate {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 15px;
+/* Print Styles */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container,
+  .sidebar,
+  .main-content,
+  footer {
+    display: none;
+    
+  }
+
+  .print-container {
+    display: block;
+    width: 100%;
+  }
+
+  .print-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 35px;
+  }
+
+  .print-student {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .print-student:last-child {
+    border-bottom: none;
+  }
+
+  .print-student div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .print-student div span.label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .print-student div span.value {
+    flex: 1;
+  }
+
+  #printDate {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #555;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+  }
+
+  /* Optional: remove margin and padding from all elements to ensure consistent layout */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ensure all elements are printed in high-quality */
+  html {
+    -webkit-print-color-adjust: exact;
+    /* For WebKit browsers */
+    print-color-adjust: exact;
+    /* Standard property for other browsers */
+  }
 }
+
 
 /* Media Queries */
 @media (max-width: 768px) {
@@ -288,9 +368,11 @@ footer {
     position: static;
     padding: 20px;
   }
+
   .input-group {
     margin-top: 30px;
   }
+
   .container {
     flex-direction: column;
     height: auto;
@@ -314,9 +396,11 @@ footer {
   .sidebar {
     padding: 15px;
   }
+
   .input-group {
     margin-top: 30px;
   }
+
   .main-content {
     padding: 15px;
   }
@@ -338,9 +422,11 @@ footer {
   .sidebar {
     padding: 10px;
   }
+
   .input-group {
     margin-top: 30px;
   }
+
   .main-content {
     padding: 10px;
   }

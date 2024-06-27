@@ -12,26 +12,31 @@ const StudentList = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const printComponentRef = useRef();
 
+  // Update field value
   const handleFieldChange = (index, value) => {
     const newFields = [...fields];
     newFields[index].value = value;
     setFields(newFields);
   };
 
+  // Handle new field name input change
   const handleNewFieldNameChange = (e) => {
     setNewFieldName(e.target.value);
   };
 
+  // Handle sort criteria input change
   const handleSortCriteriaChange = (e) => {
     setSortCriteria(e.target.value);
   };
 
+  // Handle 'Enter' key press on new field input
   const handleNewFieldKeyPress = (e) => {
     if (e.key === 'Enter') {
       addField();
     }
   };
 
+  // Handle 'Enter' key press on field inputs
   const handleFieldKeyPress = (index, e) => {
     if (e.key === 'Enter') {
       if (index < fields.length - 1) {
@@ -42,6 +47,7 @@ const StudentList = () => {
     }
   };
 
+  // Add new field
   const addField = () => {
     if (newFieldName && !fields.some(field => field.name === newFieldName)) {
       setFields([...fields, { name: newFieldName, value: '' }]);
@@ -50,11 +56,13 @@ const StudentList = () => {
     }
   };
 
+  // Delete field
   const deleteField = (index) => {
     const newFields = fields.filter((_, i) => i !== index);
     setFields(newFields);
   };
 
+  // Add new student
   const addStudent = () => {
     if (fields.length > 0 && fields.every(field => field.value.trim())) {
       const newStudent = fields.reduce((acc, field) => {
@@ -67,15 +75,23 @@ const StudentList = () => {
     }
   };
 
+  // Delete all students
   const deleteAllStudents = () => {
     setStudents([]);
   };
 
+  // Delete all fields
+  const deleteAllFields = () => {
+    setFields([]);
+  };
+
+  // Delete a single student
   const deleteStudent = (index) => {
     const newStudents = students.filter((_, i) => i !== index);
     setStudents(newStudents);
   };
 
+  // Sort students by criteria
   const sortStudents = (criteria) => {
     if (!criteria) return; // Do nothing if the criteria is empty
     if (!students.length) return;
@@ -92,8 +108,36 @@ const StudentList = () => {
     setStudents(sortedStudents);
   };
 
+  // Toggle instructions visibility
   const toggleInstructions = () => {
     setShowInstructions(!showInstructions);
+  };
+
+  // Handle drag start
+  const handleDragStart = (e, index) => {
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", index);
+    e.target.classList.add('dragging');
+  };
+
+  // Handle drag over
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  // Handle drop
+  const handleDrop = (e, index) => {
+    e.preventDefault();
+    const draggedIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
+    const newFields = [...fields];
+    const [draggedField] = newFields.splice(draggedIndex, 1);
+    newFields.splice(index, 0, draggedField);
+    setFields(newFields);
+  };
+
+  // Handle drag end
+  const handleDragEnd = (e) => {
+    e.target.classList.remove('dragging');
   };
 
   return (
@@ -101,17 +145,17 @@ const StudentList = () => {
       <div className="sidebar">
         <h1>Data Management</h1>
         <div className='instructions'>
-        <button onClick={toggleInstructions}>Hit For Instructions</button>
+          <button onClick={toggleInstructions}>Hit For Instructions</button>
           {showInstructions && (
             <p>
               Add new fields by entering a name in the "New Field" input and clicking "Add Field".
+              You can sort your fields by drag and drop them in the order you want.
               If your fields are filled, click "Add Data" to add a data entry.
               For sorting, enter the name of the field by which you want to sort the data
               and click "Sort". Additionally, you can print the student list by clicking the "Print" button.
             </p>
           )}
         </div>
-        
         <div id="newfield">
           <input
             type="text"
@@ -124,24 +168,35 @@ const StudentList = () => {
         </div>
         <hr />
         <div className="input-group">
-    
-          {fields.map((field, index) => (
-            <div key={index} className="field-container">
-              <input
-                id={`field-${index}`}
-                type="text"
-                placeholder={field.name}
-                value={field.value}
-                onChange={(e) => handleFieldChange(index, e.target.value)}
-                onKeyPress={(e) => handleFieldKeyPress(index, e)}
-              />
-              <button className="delete-field-button" onClick={() => deleteField(index)}>Delete</button>
-            </div>
-          ))}
+          <ul>
+            {fields.map((field, index) => (
+              <li
+                key={index}
+                draggable
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, index)}
+                onDragEnd={handleDragEnd}
+              >
+                <div className="field-container">
+                  <input
+                    id={`field-${index}`}
+                    type="text"
+                    placeholder={field.name}
+                    value={field.value}
+                    onChange={(e) => handleFieldChange(index, e.target.value)}
+                    onKeyPress={(e) => handleFieldKeyPress(index, e)}
+                  />
+                  <button className="delete-field-button" onClick={() => deleteField(index)}>Delete</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="button-group">
           <button id="addentry" onClick={addStudent}>Add Data</button>
-          <div className="button-group">
-            <button onClick={deleteAllStudents}>Delete All Data</button>
-          </div>
+          <button id='deteledata' onClick={deleteAllStudents}>Delete All Data</button>
+          <button id='deletefields' onClick={deleteAllFields}>Delete All Fields</button>
         </div>
         <div className="input-p-sort">
           <div className="p1">
@@ -157,7 +212,6 @@ const StudentList = () => {
             <button className="sort" onClick={() => sortStudents(sortCriteria)}>Sort</button>
           </div>
         </div>
-
         <ReactToPrint
           trigger={() => <button className="print">Print</button>}
           content={() => printComponentRef.current}
