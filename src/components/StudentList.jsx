@@ -27,6 +27,14 @@ const StudentList = () => {
   // Handle sort criteria input change
   const handleSortCriteriaChange = (e) => {
     setSortCriteria(e.target.value);
+     // Check if Enter key is pressed
+
+  };
+
+  const handleSortCriteriaKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      sortStudents(sortCriteria); // Call the sort function when Enter is pressed
+    }
   };
 
   // Handle 'Enter' key press on new field input
@@ -208,6 +216,7 @@ const StudentList = () => {
               placeholder="Sort Option"
               value={sortCriteria}
               onChange={handleSortCriteriaChange}
+              onKeyPress={handleSortCriteriaKeyPress}
             />
             <button className="sort" onClick={() => sortStudents(sortCriteria)}>Sort</button>
           </div>

@@ -1,5 +1,6 @@
 /* Body */
 body {
+  min-width: 280px;
   margin: 0;
   background-color: #f0f2f5;
   font-family: "Roboto Condensed", sans-serif;
@@ -15,7 +16,8 @@ body {
 }
 
 .sidebar {
-  padding: 20px;
+  width: 300px;
+  padding: 10px 10px 10px 10px;
   background-color: #1b0067;
   color: #ffffff;
   display: flex;
@@ -24,7 +26,7 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 300px;
+  
   /* Fixed width */
   overflow-y: auto;
 }
@@ -86,7 +88,7 @@ hr {
 .input-group {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 0px 10px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0px 7px rgba(255, 255, 255, 0.721);
@@ -224,7 +226,7 @@ hr {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 10px;
-  padding: 20px;
+  
 }
 
 .student-item {
@@ -266,12 +268,12 @@ hr {
 
 /* Footer */
 footer {
-  background-color: #343a40;
-  padding: 10px;
+  background-color: #1b0067;
+  padding: 5px;
   text-align: center;
   color: #f7f7f7;
   position: fixed;
-  left: 340px;
+  left: 0;
   bottom: 0;
   right: 0;
 }
@@ -362,11 +364,11 @@ footer {
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
+  
+  .sidebar { 
+    width: auto ;
     height: auto;
-    position: static;
-    padding: 20px;
+    position: relative;
   }
 
   .input-group {
@@ -383,34 +385,21 @@ footer {
     padding: 20px;
   }
 
-  .student-list {
-    padding: 10px;
-  }
-
   footer {
     left: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .sidebar {
-    padding: 15px;
-  }
 
-  .input-group {
-    margin-top: 30px;
+  .sidebar { 
+    width: auto ;
+    height: auto;
+    position: relative;
   }
 
   .main-content {
     padding: 15px;
-  }
-
-  .student-item {
-    padding: 10px 15px;
-  }
-
-  .student-list {
-    padding: 10px;
   }
 
   footer {
@@ -419,24 +408,16 @@ footer {
 }
 
 @media (max-width: 320px) {
-  .sidebar {
-    padding: 10px;
-  }
 
-  .input-group {
-    margin-top: 30px;
+  .sidebar { 
+    width: auto ;
+    height: auto;
+    position: relative;
+    
   }
 
   .main-content {
-    padding: 10px;
-  }
-
-  .student-item {
-    padding: 8px 10px;
-  }
-
-  .student-list {
-    padding: 10px;
+    padding: 5px 5px;
   }
 
   footer {
