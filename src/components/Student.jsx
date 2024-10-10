@@ -46,13 +46,19 @@ const Student = ({ student, index, deleteStudent, updateStudent }) => {
       <div className="student-actions">
         {isEditing ? (
           <>
-            <button className="save-button" onClick={handleSave}>Save</button>
-            <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+          <div className='btnEditDelete'>
+          <button className="save-button" onClick={handleSave}>Save</button>
+          <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+          </div>
+            
           </>
         ) : (
           <>
-            <button className="edit-button" onClick={() => setIsEditing(true)}>Edit</button>
-            <button className="delete-button" onClick={() => deleteStudent(index)}>Delete</button>
+          <div className="btnEditDelete">
+          <button className="edit-button" onClick={() => setIsEditing(true)}>Edit</button>
+          <button className="delete-button" onClick={() => deleteStudent(index)}>Delete</button>
+          </div>
+            
           </>
         )}
       </div>
