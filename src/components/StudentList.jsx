@@ -12,6 +12,7 @@ const StudentList = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const printComponentRef = useRef();
 
+<<<<<<< HEAD
   // Function to update a student's data
   const updateStudent = (index, updatedStudent) => {
     const updatedStudents = [...students];
@@ -19,6 +20,8 @@ const StudentList = () => {
     setStudents(updatedStudents);
   };
   
+=======
+>>>>>>> 3658c6ea706f6f52ed9aaacef4709cf4c33ddfb0
   // Update field value
   const handleFieldChange = (index, value) => {
     const newFields = [...fields];
@@ -115,6 +118,7 @@ const StudentList = () => {
       window.alert(`Key "${criteria}" does not exist`);
       return;
     }
+<<<<<<< HEAD
     
 
     const sortedStudents = [...students].sort((a, b) => {
@@ -144,6 +148,15 @@ const StudentList = () => {
     });
   };
   
+=======
+
+    const sortedStudents = [...students].sort((a, b) => {
+      return a[criteria].localeCompare(b[criteria]);
+    });
+
+    setStudents(sortedStudents);
+  };
+>>>>>>> 3658c6ea706f6f52ed9aaacef4709cf4c33ddfb0
 
   // Toggle instructions visibility
   const toggleInstructions = () => {
@@ -185,10 +198,18 @@ const StudentList = () => {
           <button onClick={toggleInstructions}>Hit For Instructions</button>
           {showInstructions && (
             <p>
+<<<<<<< HEAD
               Enter a name in the "New Field" input box and click "Add Field" to create a new field.
               You can rearrange your fields by dragging and dropping them into your desired order.
               Once your fields are set, click "Add Data" to input new data.
               To sort the data, type the name of the field you'd like to sort by and click "Sort". You can reverse the sort order by clicking "Reverse Sort". Click the "Print" button to print the current list.
+=======
+              Add new fields by entering a name in the "New Field" input and clicking "Add Field".
+              You can sort your fields by drag and drop them in the order you want.
+              If your fields are filled, click "Add Data" to add a data entry.
+              For sorting, enter the name of the field by which you want to sort the data
+              and click "Sort". Additionally, you can print the student list by clicking the "Print" button.
+>>>>>>> 3658c6ea706f6f52ed9aaacef4709cf4c33ddfb0
             </p>
           )}
         </div>
@@ -258,6 +279,7 @@ const StudentList = () => {
         <h1>Welcome to the Data Management React App!</h1>
         <div className="student-list">
           {students.map((student, index) => (
+<<<<<<< HEAD
             <Student 
             key={index} 
             student={student} 
@@ -274,6 +296,12 @@ const StudentList = () => {
           trigger={() => <button className="printExtraButton">Print</button>}
           content={() => printComponentRef.current}
         />
+=======
+            <Student key={index} student={student} index={index} deleteStudent={deleteStudent} />
+          ))}
+        </div>
+      </div>
+>>>>>>> 3658c6ea706f6f52ed9aaacef4709cf4c33ddfb0
       <div style={{ display: 'none' }}>
         <PrintComponent ref={printComponentRef} students={students} />
       </div>
