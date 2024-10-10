@@ -62,4 +62,5 @@ const Student = ({ student, index, deleteStudent, updateStudent }) => {
   );
 };
 
+
 export default Student;
