@@ -2,7 +2,8 @@
 body {
   min-width: 280px;
   margin: 0;
-  background-color: #f0f2f5;
+  /* background-color: #f0f2f5; */
+  background-color: #373737;
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -18,15 +19,16 @@ body {
 .sidebar {
   width: 300px;
   padding: 10px 10px 10px 10px;
-  background-color: #1b0067;
+  background-color: #1a1a2e;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
-  top: 0;
-  bottom: 0;
-  
+  top: 0.1rem;
+  bottom: 1.8rem;
+  border-radius: 1rem;
+  margin-left: 0.1rem;
   /* Fixed width */
   overflow-y: auto;
 }
@@ -39,7 +41,7 @@ body {
 .instructions button {
   margin-bottom: 0.3rem;
   padding: 10px;
-  background-color: #2200ff;
+  background-color: #162447;
   color: white;
   border: none;
   border-radius: 4px;
@@ -47,7 +49,7 @@ body {
 }
 
 .instructions button:hover {
-  background-color: #1e02d1;
+  background-color: #1f4068;
 }
 
 #newfield {
@@ -66,7 +68,7 @@ body {
 }
 
 #addfield {
-  background-color: #007bff;
+  background-color: #1f4068;
   color: white;
   border: none;
   border-radius: 4px;
@@ -74,23 +76,22 @@ body {
 }
 
 #addfield:hover {
-  background-color: #0056b3;
+  background-color: #162447;
 }
 
 hr {
   border: 0;
   height: 1px;
-  background: #ccc;
-  /* Change the color as needed */
-  margin: 20px 0;
-  /* Add some margin for spacing */
+  background-color: #e43f5a;
+  margin: 10px -10px;
+
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
   padding: 0px 10px 10px 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #e43f5a;
   border-radius: 8px;
   box-shadow: 0 0px 7px rgba(255, 255, 255, 0.721);
 }
@@ -142,15 +143,15 @@ hr {
 }
 
 #addentry {
-  background-color: #007bff;
+  background-color: #1f4068;
   color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 4px; 
 }
 
 #addentry:hover {
-  background-color: #0056b3;
+  background-color: #162447;
+  cursor: pointer;
 }
 
 .button-group {
@@ -173,7 +174,7 @@ hr {
 }
 
 .sort {
-  background-color: #007bff;
+  background-color: #1f4068;
   padding: 10px;
   color: white;
   border: none;
@@ -182,7 +183,7 @@ hr {
 }
 
 .sort:hover {
-  background-color: #0056b3;
+  background-color: #162447;
 }
 
 .input-sort {
@@ -196,18 +197,17 @@ hr {
 
 .print {
   margin-bottom: 50px;
-  background-color: #ff0000;
+  background-color: #bd0020;
   color: white;
   padding: 10px;
   margin-top: 10px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
 }
 
 .print:hover {
-  background-color: #c60000;
-
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 /* Main Content */
@@ -248,7 +248,7 @@ hr {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: #535353;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -259,7 +259,7 @@ hr {
 
 .student-item:hover {
   transform: scale(1.02);
-  background-color: #ecebeb;
+  background-color: #777777;
   cursor: pointer;
 }
 
@@ -326,22 +326,23 @@ hr {
 
 .edit-button {
   width: 100%;
-  background-color: #007bff;
+  margin: 0;
+  background-color: #1f4068;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 5px 10px;
-  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  cursor: pointer;
+  background-color: #162447;
 }
 .save-button {
   width: 100%;
   margin: 0.2rem;
-  background-color: #007bff;
+  background-color: #1f4068;
   color: white;
   border: none;
   border-radius: 4px;
@@ -350,7 +351,7 @@ hr {
 }
 
 .save-button:hover {
-  background-color: #0056b3;
+  background-color: #162447;
   cursor: pointer;
 
 }
@@ -374,7 +375,7 @@ hr {
   margin-bottom: 25px;
   margin-top: 5px;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #1f4068;
   color: white;
   border: none;
   border-radius: 4px;
@@ -385,11 +386,11 @@ hr {
 
 .reverseSortButton:hover {
 	cursor: pointer;
-  background-color: #0056b3;
+  background-color: #162447;
 }
 
 .printExtraButton {
-  background-color: #ff0000;
+  background-color: #bd0020;
   position: fixed;
   margin-bottom: 25px;
   margin-top: 5px;
@@ -403,15 +404,15 @@ hr {
 }
 
 .printExtraButton:hover {
+  opacity: 0.7;
   cursor: pointer;
-  background-color: #c60000;
 }
 
 
 
 /* Footer */
 footer {
-  background-color: #1b0067;
+  background-color: #1a1a2e;
   padding: 5px;
   text-align: center;
   color: #f7f7f7;
