@@ -12,7 +12,6 @@ const StudentList = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const printComponentRef = useRef();
 
-
   // Function to update a student's data
   const updateStudent = (index, updatedStudent) => {
     const updatedStudents = [...students];
@@ -20,7 +19,6 @@ const StudentList = () => {
     setStudents(updatedStudents);
   };
   
-
   // Update field value
   const handleFieldChange = (index, value) => {
     const newFields = [...fields];
@@ -94,12 +92,28 @@ const StudentList = () => {
 
   // Delete all students
   const deleteAllStudents = () => {
-    setStudents([]);
+    if(students.length === 0){
+      window.alert("No data yet!");
+      return;
+    }
+
+    const confDelStuds = window.confirm("Are you sure you want to delete all the data?");
+    if(confDelStuds){
+      setStudents([]);
+    }
   };
 
   // Delete all fields
   const deleteAllFields = () => {
-    setFields([]);
+    if(fields.length === 0) {
+      window.alert("No fields yet!");
+      return;
+    }
+
+    const confDelFields = window.confirm("Are you sure you want to delete all the fields?");
+    if(confDelFields){
+      setFields([]);
+    }
   };
 
   // Delete a single student
@@ -108,44 +122,39 @@ const StudentList = () => {
     setStudents(newStudents);
   };
 
-  // Sort students by criteria
-  const sortStudents = (criteria) => {
-    if (!criteria) return; // Do nothing if the criteria is empty
-    if (!students.length) return;
+ // Sort students by criteria
+const sortStudents = (criteria) => {
+  if (!criteria) return; // Do nothing if the criteria is empty
+  if (!students.length) return;
 
-    if (!Object.keys(students[0]).includes(criteria)) {
-      window.alert(`Key "${criteria}" does not exist`);
-      return;
+  // Check if the specified criteria exists in the student objects
+  if (!Object.keys(students[0]).includes(criteria)) {
+    window.alert(`Key "${criteria}" does not exist`);
+    return;
+  }
+
+  const sortedStudents = [...students].sort((a, b) => {
+    const aValue = String(a[criteria]);
+    const bValue = String(b[criteria]);
+
+    const isANumber = /^[0-9]+$/.test(aValue); 
+    const isBNumber = /^[0-9]+$/.test(bValue); 
+
+    if (isANumber && isBNumber) {
+      return Number(aValue) - Number(bValue);
+    } else {
+      return aValue.localeCompare(bValue);
     }
-    
+  });
 
-    const sortedStudents = [...students].sort((a, b) => {
-      const aValue = String(a[criteria]);
-      const bValue = String(b[criteria]);
-  
-      const isANumber = /^[0-9]+$/.test(aValue); // Check if aValue is a number
-      const isBNumber = /^[0-9]+$/.test(bValue); // Check if bValue is a number
-  
-      if (isANumber && isBNumber) {
-        // Both are numbers, sort numerically
-        return Number(aValue) - Number(bValue);
-      } else {
-        // Otherwise, sort lexicographically as strings
-        return aValue.localeCompare(bValue);
-      }
-    });
-  
-    setStudents(sortedStudents);
-    return sortedStudents;
-  };
+  setStudents(sortedStudents);
+};
 
-  const reverseSort = () => {
-    setStudents((prevStudents) => {
-      const reversed = [...prevStudents].reverse();
-      return reversed;
-    });
-  };
-  
+// Reverse sort students
+const reverseSort = () => {
+  setStudents((prevStudents) => [...prevStudents].reverse());
+};
+
 
   // Toggle instructions visibility
   const toggleInstructions = () => {
@@ -190,8 +199,7 @@ const StudentList = () => {
               Enter a name in the "New Field" input box and click "Add Field" to create a new field.
               You can rearrange your fields by dragging and dropping them into your desired order.
               Once your fields are set, click "Add Data" to input new data.
-              To sort the data, type the name of the field you'd like to sort by and click "Sort". You can reverse the sort order by clicking "Reverse Sort". Click the "Print" button to print the current list.
-</p>
+              To sort the data, type the name of the field you'd like to sort by and click "Sort". You can reverse the sort order by clicking "Reverse Sort". Click the "Print" button to print the current list.</p>
           )}
         </div>
         <div id="newfield">
@@ -237,10 +245,7 @@ const StudentList = () => {
           <button id='deletefields' onClick={deleteAllFields}>Delete All Fields</button>
         </div>
         <div className="input-p-sort">
-          <div className="p1">
             <p>Sort Your Data</p>
-          </div>
-          <div className='input-sort'>
             <input
               type="text"
               placeholder="Sort Option"
@@ -249,34 +254,27 @@ const StudentList = () => {
               onKeyPress={handleSortCriteriaKeyPress}
             />
             <button className="sort" onClick={() => sortStudents(sortCriteria)}>Sort</button>
-          </div>
         </div>
-        <ReactToPrint
-          trigger={() => <button className="print">Print</button>}
-          content={() => printComponentRef.current}
-        />
       </div>
       <div className="main-content">
-        <h1>Welcome to the Data Management React App!</h1>
+        <h1>View Your Data!</h1>
         <div className="student-list">
           {students.map((student, index) => (
-            <Student 
-            key={index} 
-            student={student} 
-            index={index} 
-            deleteStudent={deleteStudent}
-            updateStudent={updateStudent}
-            />
+             <Student 
+             key={student.id} 
+             student={student} 
+             index={index} 
+             deleteStudent={deleteStudent}
+             updateStudent={updateStudent}
+           />
           ))}
         </div>
-        
         <button className='reverseSortButton' onClick={reverseSort}>Reverse Sort</button>
-      </div>
-      <ReactToPrint
+        <ReactToPrint
           trigger={() => <button className="printExtraButton">Print</button>}
           content={() => printComponentRef.current}
         />
-
+      </div>
       <div style={{ display: 'none' }}>
         <PrintComponent ref={printComponentRef} students={students} />
       </div>

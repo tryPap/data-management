@@ -2,8 +2,7 @@
 body {
   min-width: 280px;
   margin: 0;
-  /* background-color: #f0f2f5; */
-  background-color: #515151;
+  background-color: #f0f2f5;
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -19,7 +18,7 @@ body {
 .sidebar {
   width: 300px;
   padding: 10px 10px 10px 10px;
-  background-color: #0f1524;
+  background-color: #1b0067;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -41,16 +40,15 @@ body {
 .instructions button {
   margin-bottom: 0.3rem;
   padding: 10px;
-  background-color: #162447;
+  background-color: #2200ff;
   color: white;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .instructions button:hover {
-  background-color: #1f4068;
-  cursor: pointer;
-
+  background-color: #1e02d1;
 }
 
 #newfield {
@@ -59,17 +57,17 @@ body {
 }
 
 #newfield input,
-.input-p-sort input {
+.input-sort input {
   flex: 1;
   padding: 10px;
-  margin-right: 0.5rem;
+  margin-right: 10px;
   border: none;
   border-radius: 4px;
   outline: none;
 }
 
 #addfield {
-  background-color: #162447;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -77,23 +75,23 @@ body {
 }
 
 #addfield:hover {
-  background-color: #1f4068;
-
+  background-color: #0056b3;
 }
 
 hr {
   border: 0;
   height: 1px;
-  background-color: #e43f5a;
-  margin: 10px -10px;
-
+  background: #ccc;
+  /* Change the color as needed */
+  margin: 20px 0;
+  /* Add some margin for spacing */
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
   padding: 0px 10px 10px 10px;
-  border: 1px solid #e43f5a;
+  border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0px 7px rgba(255, 255, 255, 0.721);
 }
@@ -145,15 +143,15 @@ hr {
 }
 
 #addentry {
-  background-color: #162447;
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px; 
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 #addentry:hover {
-  background-color: #1f4068;
-  cursor: pointer;
+  background-color: #0056b3;
 }
 
 .button-group {
@@ -167,47 +165,50 @@ hr {
   color: white;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
   margin-top: 10px;
 }
 
 .button-group button:hover {
-  cursor: pointer;
   background-color: #ad0000;
 }
 
 .sort {
-  background-color: #162447;
+  background-color: #007bff;
   padding: 10px;
   color: white;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .sort:hover {
-  cursor: pointer;
-  background-color: #1f4068;
+  background-color: #0056b3;
 }
 
-.input-p-sort {
+.input-sort {
+  display: flex;
+  margin-top: 10px;
+}
+
+.p1 p {
   text-align: center;
 }
 
-
-
-
 .print {
   margin-bottom: 50px;
-  background-color: #bd0020;
+  background-color: #ff0000;
   color: white;
   padding: 10px;
   margin-top: 10px;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .print:hover {
-  opacity: 0.7;
-  cursor: pointer;
+  background-color: #c60000;
+
 }
 
 /* Main Content */
@@ -248,7 +249,7 @@ hr {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #535353;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -259,7 +260,7 @@ hr {
 
 .student-item:hover {
   transform: scale(1.02);
-  background-color: #777777;
+  background-color: #ecebeb;
   cursor: pointer;
 }
 
@@ -326,23 +327,22 @@ hr {
 
 .edit-button {
   width: 100%;
-  margin: 0;
-  background-color: #1f4068;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 5px 10px;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .edit-button:hover {
-  cursor: pointer;
-  background-color: #162447;
+  background-color: #0056b3;
 }
 .save-button {
   width: 100%;
   margin: 0.2rem;
-  background-color: #1f4068;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -351,7 +351,7 @@ hr {
 }
 
 .save-button:hover {
-  background-color: #162447;
+  background-color: #0056b3;
   cursor: pointer;
 
 }
@@ -375,7 +375,7 @@ hr {
   margin-bottom: 25px;
   margin-top: 5px;
   padding: 10px;
-  background-color: #162447;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -385,13 +385,12 @@ hr {
 }
 
 .reverseSortButton:hover {
-  background-color: #1f4068;
-
 	cursor: pointer;
+  background-color: #0056b3;
 }
 
 .printExtraButton {
-  background-color: #bd0020;
+  background-color: #ff0000;
   position: fixed;
   margin-bottom: 25px;
   margin-top: 5px;
@@ -405,15 +404,15 @@ hr {
 }
 
 .printExtraButton:hover {
-  opacity: 0.7;
   cursor: pointer;
+  background-color: #c60000;
 }
 
 
 
 /* Footer */
 footer {
-  background-color: #0f1524;
+  background-color: #1b0067;
   padding: 5px;
   text-align: center;
   color: #f7f7f7;

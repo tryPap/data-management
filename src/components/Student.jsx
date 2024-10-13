@@ -55,8 +55,10 @@ const Student = ({ student, index, deleteStudent, updateStudent }) => {
         ) : (
           <>
           <div className="btnEditDelete">
-          <button className="edit-button" onClick={() => setIsEditing(true)}>Edit</button>
-          <button className="delete-button" onClick={() => deleteStudent(index)}>Delete</button>
+          <button className="edit-button" onClick={() => {
+              setEditedStudent(student);
+              setIsEditing(true)
+          }}>Edit</button>          <button className="delete-button" onClick={() => deleteStudent(index)}>Delete</button>
           </div>
             
           </>
