@@ -2,8 +2,7 @@
 body {
   min-width: 280px;
   margin: 0;
-  /* background-color: #f0f2f5; */
-  background-color: #515151;
+  background-color: #b8b6b6;
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -13,13 +12,12 @@ body {
   margin: 0;
   flex-direction: row;
   padding-bottom: 50px;
-  /* Space for footer */
 }
 
 .sidebar {
   width: 300px;
   padding: 10px 10px 10px 10px;
-  background-color: #0f1524;
+  background-color: #1b0067;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -41,14 +39,14 @@ body {
 .instructions button {
   margin-bottom: 0.3rem;
   padding: 10px;
-  background-color: #162447;
+  background-color: #2200ff;
   color: white;
   border: none;
   border-radius: 4px;
 }
 
 .instructions button:hover {
-  background-color: #1f4068;
+  background-color: #1e02d1;
   cursor: pointer;
 
 }
@@ -69,22 +67,21 @@ body {
 }
 
 #addfield {
-  background-color: #162447;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
 }
 
 #addfield:hover {
-  background-color: #1f4068;
-
+  background-color: #0056b3;
+  cursor: pointer;
 }
 
 hr {
   border: 0;
   height: 1px;
-  background-color: #e43f5a;
+  background-color: #ccc;
   margin: 10px -10px;
 
 }
@@ -128,11 +125,11 @@ hr {
   border-radius: 4px;
   padding: 10px;
   margin-left: 10px;
-  cursor: pointer;
 }
 
 .delete-field-button:hover {
-  background-color: #c82333;
+  background-color: #ad0000;
+  cursor: pointer;
 }
 
 .input-group button {
@@ -145,14 +142,14 @@ hr {
 }
 
 #addentry {
-  background-color: #162447;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px; 
 }
 
 #addentry:hover {
-  background-color: #1f4068;
+  background-color: #0056b3;
   cursor: pointer;
 }
 
@@ -176,7 +173,7 @@ hr {
 }
 
 .sort {
-  background-color: #162447;
+  background-color: #007bff;
   padding: 10px;
   color: white;
   border: none;
@@ -185,15 +182,12 @@ hr {
 
 .sort:hover {
   cursor: pointer;
-  background-color: #1f4068;
+  background-color: #0056b3;
 }
 
 .input-p-sort {
   text-align: center;
 }
-
-
-
 
 .print {
   margin-bottom: 50px;
@@ -231,8 +225,6 @@ hr {
   
 }
 
-
-
 .studIndex {
   position: absolute; /* Position it absolutely within the parent */
   top: 8px; /* Adjust as necessary */
@@ -248,7 +240,7 @@ hr {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #535353;
+  background-color: #efefef;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -259,7 +251,7 @@ hr {
 
 .student-item:hover {
   transform: scale(1.02);
-  background-color: #777777;
+  background-color: #ecebeb;
   cursor: pointer;
 }
 
@@ -316,18 +308,18 @@ hr {
   border: none;
   border-radius: 4px;
   padding: 5px 10px;
-  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .delete-button:hover {
   background-color: #f11111;
+  cursor: pointer;
 }
 
 .edit-button {
   width: 100%;
   margin: 0;
-  background-color: #1f4068;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -337,12 +329,12 @@ hr {
 
 .edit-button:hover {
   cursor: pointer;
-  background-color: #162447;
+  background-color: #0056b3;
 }
 .save-button {
   width: 100%;
   margin: 0.2rem;
-  background-color: #1f4068;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -351,7 +343,7 @@ hr {
 }
 
 .save-button:hover {
-  background-color: #162447;
+  background-color: #0056b3;
   cursor: pointer;
 
 }
@@ -375,7 +367,7 @@ hr {
   margin-bottom: 25px;
   margin-top: 5px;
   padding: 10px;
-  background-color: #162447;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -385,18 +377,17 @@ hr {
 }
 
 .reverseSortButton:hover {
-  background-color: #1f4068;
-
+  background-color: #0056b3;
 	cursor: pointer;
 }
 
 .printExtraButton {
   background-color: #bd0020;
+  color: white;
   position: fixed;
   margin-bottom: 25px;
   margin-top: 5px;
   padding: 10px;
-  color: white;
   border: none;
   border-radius: 4px;
   bottom: 10px;
@@ -409,11 +400,31 @@ hr {
   cursor: pointer;
 }
 
+.export-button {
+  background-color: #28a745;
+  color: white;
+  position: fixed;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin: 10px;
+  bottom: 25px;
+  right: 210px;
+  width: 100px;
+}
+
+.export-button:hover {
+  background-color: #218838;
+  cursor: pointer;
+}
+
 
 
 /* Footer */
 footer {
-  background-color: #0f1524;
+  background-color: #1b0067;
   padding: 5px;
   text-align: center;
   color: #f7f7f7;

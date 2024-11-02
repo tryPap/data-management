@@ -3,6 +3,9 @@ import Student from './Student';
 import ReactToPrint from 'react-to-print';
 import PrintComponent from './PrintComponent';
 import '../index.css';
+import ExcelJS from 'exceljs';
+
+
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -188,6 +191,42 @@ const reverseSort = () => {
     e.target.classList.remove('dragging');
   };
 
+  // Function to capitalize the first letter of each word
+  const capitalize = (text) => {
+    return text.replace(/\b\w/g, char => char.toUpperCase());
+  };
+  
+  
+// Function to export data to Excel with full custom styling
+const exportToExcel = async (students) => {
+  // Create a new workbook and add a worksheet
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Students');
+
+  // Extract headers and capitalize them
+  const headers = Object.keys(students[0]).map(key => capitalize(key));
+
+  // Add header row with yellow background and bold text
+  worksheet.addRow(headers).eachCell((cell) => {
+    cell.font = { bold: true };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFF00' } }; // Yellow background color
+  });
+
+  // Add student data rows with capitalized values
+  students.forEach(student => {
+    const row = Object.values(student).map(value => capitalize(String(value)));
+    worksheet.addRow(row);
+  });
+
+  // Save the workbook to a file and trigger download
+  const buffer = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "MyData.xlsx";
+  link.click();
+};
+
   return (
     <div className="container">
       <div className="sidebar">
@@ -269,6 +308,7 @@ const reverseSort = () => {
            />
           ))}
         </div>
+        <button onClick={() => exportToExcel(students)} className="export-button">Excel</button>
         <button className='reverseSortButton' onClick={reverseSort}>Reverse Sort</button>
         <ReactToPrint
           trigger={() => <button className="printExtraButton">Print</button>}
