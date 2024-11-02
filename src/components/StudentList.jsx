@@ -238,7 +238,10 @@ const exportToExcel = async (students) => {
               Enter a name in the "New Field" input box and click "Add Field" to create a new field.
               You can rearrange your fields by dragging and dropping them into your desired order.
               Once your fields are set, click "Add Data" to input new data.
-              To sort the data, type the name of the field you'd like to sort by and click "Sort". You can reverse the sort order by clicking "Reverse Sort". Click the "Print" button to print the current list.</p>
+              To sort the data, type the name of the field you'd like to sort by and click "Sort".
+              You can reverse the sort order by clicking "Reverse Sort". Click the "Print" button to print the current list.
+              Or click the "Excel" button to save the data localy.
+              </p>
           )}
         </div>
         <div id="newfield">
