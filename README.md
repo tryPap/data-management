@@ -1,6 +1,6 @@
 # Data Management
 
-Visit the site here: https://trypap.github.io/data_as_list/
+Visit the site here: https://trypap.github.io/data-management/
 A simple web application to manage a list of entries with customizable fields. Built with React and includes a feature to print the list of entries.
 
 ## Features
